@@ -20,6 +20,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider } from './context/AuthContext';
 import { ModeProvider } from './context/ModeContext';
 import PrivateRoute from './components/PrivateRoute';
+import NotFound from './pages/NotFound';
 
 function App() {
   
@@ -44,7 +45,9 @@ function App() {
             <Route path="/authors/:id/avatar" element={<PrivateRoute element={<UploadAvatar />} />} />
             <Route path="/blogposts/:id/cover" element={<PrivateRoute element={<UploadCover />} />} />
             <Route path="/blogPosts/:id/comments/:commentId" element={<PrivateRoute element={<CommentDetails />} />} />
-            <Route path="/auth/callback" element={<TokenHandler />} /> {/* Aggiungi questa rotta */}
+            <Route path="/auth/callback" element={<TokenHandler />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<Navigate to="/404" />} />
           </Routes>
           <Footer />
         </ModeProvider>

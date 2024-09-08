@@ -20,7 +20,7 @@ const BlogPostDetails = () => {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response = await fetch(`http://localhost:4000/blogposts/${id}`);
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${id}`);
                 if (!response.ok) {
                     throw new Error('Unable to fetch post.');
                 }
@@ -51,7 +51,7 @@ const BlogPostDetails = () => {
 
     const handleEditPost = async () => {
         try {
-            const response = await fetch(`http://localhost:4000/blogposts/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ const BlogPostDetails = () => {
 
     const handleDeletePost = async () => {
         try {
-            const response = await fetch(`http://localhost:4000/blogposts/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`

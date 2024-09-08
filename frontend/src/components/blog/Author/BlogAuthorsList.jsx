@@ -25,7 +25,7 @@ const BlogAuthorsList = () => {
   // Function to fetch authors
   const fetchAuthors = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/authors?_page=${page}&_limit=${limit}`);
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/authors?_page=${page}&_limit=${limit}`);
       const data = await response.json();
       
       setAuthors(data.authors || []); // Fallback to empty array if no authors found
@@ -57,7 +57,7 @@ const BlogAuthorsList = () => {
     const authorData = { ...formData };
 
     try {
-      const response = await fetch('http://localhost:4000/authors', {
+      const response = await fetch( `${process.env.REACT_APP_BACKEND_URL}/authors`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ const BlogAuthorsList = () => {
   const handleDeleteAllAuthors = async () => {
     if (window.confirm('Are you sure you want to delete all authors? This action cannot be undone.')) {
       try {
-        const response = await fetch('http://localhost:4000/authors', {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/authors`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,

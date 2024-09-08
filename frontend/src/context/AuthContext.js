@@ -11,14 +11,14 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:4000/auth/google';
+    window.location.href = `${process.env.REACT_APP_BACKEND_URL}/auth/google`;
   };
 
   const login = async (token) => {
     localStorage.setItem('token', token);
     setIsAuthenticated(true);
     try {
-      const response = await fetch('http://localhost:4000/me', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/me`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
         const token = localStorage.getItem('token');
         if (token) {
           try {
-            const response = await fetch('http://localhost:4000/me', {
+            const response = await fetch( `${process.env.REACT_APP_BACKEND_URL}/me`, {
               headers: {
                 'Authorization': `Bearer ${token}`,
               },

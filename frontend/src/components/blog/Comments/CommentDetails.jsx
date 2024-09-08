@@ -16,7 +16,7 @@ const CommentDetails = () => {
     useEffect(() => {
         const fetchComment = async () => {
             try {
-                const response = await fetch(`http://localhost:4000/blogposts/${id}/comments/${commentId}`);
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${id}/comments/${commentId}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch comment');
                 }
@@ -36,7 +36,7 @@ const CommentDetails = () => {
     const handleUpdateComment = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:4000/blogposts/${id}/comments/${commentId}`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${id}/comments/${commentId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ const CommentDetails = () => {
     const handleDeleteComment = async () => {
         if (window.confirm('Are you sure you want to delete this comment? This action cannot be undone.')) {
             try {
-                const response = await fetch(`http://localhost:4000/blogposts/${id}/comments/${commentId}`, {
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${id}/comments/${commentId}`, {
                     method: 'DELETE',
                 });
 

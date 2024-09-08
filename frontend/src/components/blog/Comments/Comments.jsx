@@ -18,7 +18,7 @@ const Comments = ({ postId }) => {
 
         const fetchComments = async () => {
             try {
-                const response = await fetch(`http://localhost:4000/blogposts/${postId}/comments`);
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${postId}/comments`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch comments');
                 }
@@ -41,7 +41,7 @@ const Comments = ({ postId }) => {
         }
 
         try {
-            const response = await fetch(`http://localhost:4000/blogposts/${postId}/comments`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${postId}/comments`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -9,7 +9,7 @@ dotenv.config();
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "http://localhost:4000/auth/callback-google",
+  callbackURL: `${process.env.HOST}:${process.env.PORT}/auth/callback-google`,
 }, async (accessToken, refreshToken, profile, done) => {
   try {
     console.log('Google Profile:', profile); // Log the Google profile information

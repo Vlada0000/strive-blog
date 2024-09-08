@@ -30,7 +30,7 @@ const UploadCover = ({ postId, onCoverUploaded }) => {
     setSuccess(null);
 
     try {
-      const response = await fetch(`http://localhost:4000/blogposts/${postId}/cover`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${postId}/cover`, {
         method: 'PATCH',
         body: formData,
       });

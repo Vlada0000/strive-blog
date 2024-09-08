@@ -40,8 +40,8 @@ const BlogPosts = ({ searchQuery, authorId }) => {
         if (localAuthorId) query.append('authorId', localAuthorId);
 
         const url = localAuthorId 
-          ? `http://localhost:4000/blogposts/authors/${localAuthorId}?${query.toString()}`
-          : `http://localhost:4000/blogposts?${query.toString()}`;
+          ? `${process.env.REACT_APP_BACKEND_URL}/blogposts/authors/${localAuthorId}?${query.toString()}`
+          : `${process.env.REACT_APP_BACKEND_URL}/blogposts?${query.toString()}`;
 
         const response = await fetch(url);
         if (!response.ok) {

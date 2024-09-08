@@ -36,7 +36,7 @@ const NewBlogPost = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:4000/blogposts', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blogposts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ const NewBlogPost = () => {
         const formData = new FormData();
         formData.append('coverImage', coverImage);
 
-        const uploadResponse = await fetch(`http://localhost:4000/blogposts/${responseBody._id}/cover`, {
+        const uploadResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${responseBody._id}/cover`, {
           method: 'PATCH',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`

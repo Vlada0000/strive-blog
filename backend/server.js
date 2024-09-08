@@ -17,12 +17,12 @@ import authRoutes from './routes/authRoutes.js';
 dotenv.config();
 
 const server = express();
-const port = process.env.PORT || 4000;
-const host = process.env.HOST || 'localhost';
+const port = process.env.PORT 
+const host = process.env.HOST 
 
 server.use(morgan('dev'));
 server.use(helmet());
-server.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+server.use(cors());
 server.use(express.json());
 server.use(passport.initialize());
 
@@ -33,7 +33,7 @@ const uri = process.env.MONGO_URI;
 mongoose
   .connect(uri)
   .then(() => console.log("Connesso a MongoDB"))
- /* .then(async () => {
+  /*.then(async () => {
     console.log("Connesso a MongoDB");
 
     // Gestione degli indici
@@ -51,8 +51,8 @@ mongoose
     } catch (error) {
       console.error('Errore nella gestione degli indici:', error);
     }
-  })*/
-  .catch((err) => console.error("Errore di connessione a MongoDB: ", err));
+  })
+  .catch((err) => console.error("Errore di connessione a MongoDB: ", err));*/
 
 
 server.post('/register', upload.single('avatar'), register);

@@ -25,7 +25,7 @@ const UserProfile = () => {
           return;
         }
 
-        const response = await fetch('http://localhost:4000/me', {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/me`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -69,7 +69,7 @@ const UserProfile = () => {
       formData.append('avatar', file);
 
       try {
-        const response = await fetch('http://localhost:4000/me/avatar', {
+        const response = await fetch( `${process.env.REACT_APP_BACKEND_URL}/me/avatar`, {
           method: 'PATCH',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -91,7 +91,7 @@ const UserProfile = () => {
 
   const handleProfileUpdate = async () => {
     try {
-      const response = await fetch('http://localhost:4000/me', {
+      const response = await fetch( `${process.env.REACT_APP_BACKEND_URL}/me`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -119,7 +119,7 @@ const UserProfile = () => {
   const handleProfileDelete = async () => {
     if (window.confirm('Are you sure you want to delete your profile? This action cannot be undone.')) {
       try {
-        const response = await fetch('http://localhost:4000/me', {
+        const response = await fetch( `${process.env.REACT_APP_BACKEND_URL}/me`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,

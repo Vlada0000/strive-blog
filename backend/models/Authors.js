@@ -22,11 +22,11 @@ const AuthorSchema = new Schema({
   },
   surname: { 
     type: String, 
-    required: true 
+   // required: true 
   },
   birthDate: { 
     type: String, 
-    required: true 
+   // required: true 
   },
   avatar: { 
     type: String, 

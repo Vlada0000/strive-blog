@@ -29,7 +29,7 @@ const AuthorDetails = () => {
   useEffect(() => {
     const fetchAuthor = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/authors/${id}`);
+        const response = await fetch( `${process.env.REACT_APP_BACKEND_URL}/authors/${id}`); 
         if (!response.ok) throw new Error('Failed to fetch author data');
         
         const data = await response.json();
@@ -62,7 +62,7 @@ const AuthorDetails = () => {
   const handleEditAuthor = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:4000/authors/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/authors/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -79,7 +79,7 @@ const AuthorDetails = () => {
 
   const handleDeleteAuthor = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/authors/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/authors/${id}`, {
         method: 'DELETE',
       });
 

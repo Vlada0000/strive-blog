@@ -12,7 +12,7 @@ router.get('/auth/callback-google', passport.authenticate('google', { session: f
   const { token } = req.user;
 
   if (token) {
-    res.redirect(`http://localhost:3000/auth/callback?token=${token}`); // Redirect al frontend con il token
+    res.redirect(`${process.env.FRONTEND_URL}/auth/callback?token=${token}`); // Redirect al frontend con il token
   } else {
     res.status(500).json({ error: 'Errore nella generazione del token' });
   }

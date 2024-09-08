@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 
 const yourUserId = "123";
 
-export default function BlogLike({ defaultLikes, onChange }) {
+export default function BlogLike({ defaultLikes = [], onChange }) {
   const [likes, setLikes] = useState(defaultLikes);
   const iLikedThisArticle = likes.includes(yourUserId);
 
@@ -17,11 +17,10 @@ export default function BlogLike({ defaultLikes, onChange }) {
   };
 
   useEffect(() => {
-    // Chiama onChange ogni volta che likes cambia
     if (onChange) {
       onChange(likes);
     }
-  }, [likes, onChange]); // Aggiungi likes e onChange all'array delle dipendenze
+  }, [likes, onChange]);
 
   return (
     <div>

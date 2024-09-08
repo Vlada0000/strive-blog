@@ -22,7 +22,20 @@ const host = process.env.HOST
 
 server.use(morgan('dev'));
 server.use(helmet());
-server.use(cors());
+
+const allowlist = [process.env.FRONTEND_URL]
+const corsOptionsDelegate = function (req, callback) {
+  let corsOptions;
+  if (allowlist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true };
+  } else {
+    corsOptions = { origin: false };
+  }
+  callback(null, corsOptions);
+}
+
+
+server.use(cors(corsOptionsDelegate));
 server.use(express.json());
 server.use(passport.initialize());
 

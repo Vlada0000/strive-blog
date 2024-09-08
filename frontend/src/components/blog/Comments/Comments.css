@@ -1,0 +1,95 @@
+.comments-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.comments-section .card {
+    border: none;
+    background-color: #fff;
+}
+
+.comments-section .card-header {
+    background-color: #343a40;
+    color: #fff;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.comments-section .list-group-item {
+    border: none;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.comments-section .list-group-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.comments-section p {
+    font-size: 1rem;
+    color: #495057;
+}
+
+.comments-section strong {
+    font-size: 1.1rem;
+    color: #212529;
+}
+
+.comments-section .btn-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.comments-section .btn-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.comments-section textarea,
+.comments-section input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ced4da;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.comments-section textarea:focus,
+.comments-section input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.comments-section button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.comments-section button[type="submit"]:hover {
+    background-color: #218838;
+}
+

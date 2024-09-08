@@ -1,0 +1,11 @@
+
+### OTTENERE TUTTI GLI AUTORI
+GET http://localhost:4000/authors
+
+###
+GET http://localhost:4000/authors/66dc338b618c5e6d146aafc9/blogPosts?_page=1&_limit=10
+Content-Type: application/json
+
+
+###
+DELETE http://localhost:4000/blogPosts

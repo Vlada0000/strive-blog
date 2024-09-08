@@ -1,0 +1,54 @@
+.new-blog-container {
+    margin-top: 20px;
+  }
+  
+  .form-control {
+    border-radius: 0.5rem;
+  }
+  
+  button {
+    border-radius: 0.5rem;
+  }
+  
+  .mt-5 {
+    margin-top: 3rem;
+  }
+  
+  button[type="submit"] {
+    background-color: #343a40; 
+    color: #fff;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #23272b; 
+  }
+  
+  button[type="reset"] {
+    border-color: #343a40; 
+    color: #343a40;
+  }
+  
+  button[type="reset"]:hover {
+    background-color: #f8f9fa; 
+  }
+  
+  .text-danger {
+    font-weight: bold;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .avatar-placeholder {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #ddd;
+    text-align: center;
+    line-height: 150px;
+    font-size: 2rem;
+    color: #555;
+  }
+  

@@ -1,0 +1,124 @@
+.blog-author-row {
+ 
+    margin:0 auto;
+}
+.margin{
+    margin-top:10%!important;
+}
+.author-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; 
+    border-radius: 10px; 
+}
+
+.author-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
+}
+
+.author-card img {
+    object-fit: cover;
+    height: 200px;
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px;
+}
+
+.author-card .card-body {
+    text-align: center;
+    padding: 20px; 
+}
+
+.author-card .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.author-card .card-text {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.author-card .card-text strong {
+    font-weight: 600;
+    color: #000;
+}
+
+button.mb-4 {
+    background: #007bff;
+    color: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+    transition: background 0.3s ease;
+}
+
+button.mb-4:hover {
+    background: #0056b3;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.pagination .page-link {
+    color: #007bff;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pagination .page-link:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+
+.modal-header {
+    background-color: #007bff;
+    color: white;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer button {
+    border-radius: 50px;
+}
+
+.form-control {
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    transition: border 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    transition: background 0.3s ease;
+    display: block;
+    margin-top: 15px;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}

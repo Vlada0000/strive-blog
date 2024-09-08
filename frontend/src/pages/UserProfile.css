@@ -1,0 +1,36 @@
+.user-profile-container {
+  margin-top: 20px;
+}
+
+.profile-avatar {
+  text-align: center;
+}
+
+.avatar-img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #ddd;
+  text-align: center;
+  line-height: 150px;
+  font-size: 2rem;
+  color: #555;
+}
+
+.btn-logout {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+}
+
+.btn-logout:hover {
+  background-color: #c82333;
+}

@@ -1,0 +1,29 @@
+body {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0; 
+}
+
+@media (min-width: 1200px) {
+  body {
+    margin-top: 10%;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) { 
+  body {
+    margin-top: 12%;
+  }
+}
+
+@media (max-width: 991px) { 
+  body {
+    margin-top: 30%; 
+  }
+}
+
+
+@media (max-width: 576px) {
+  body {
+    margin-top:45%; 
+  }
+}

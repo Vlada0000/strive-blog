@@ -8,15 +8,15 @@ import './BlogPostDetails.css';
 
 const BlogPostDetails = () => {
     const { id } = useParams();
-    const { author } = useContext(AuthContext);
+    const { author: currentUser } = useContext(AuthContext); 
     const navigate = useNavigate();
     const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [editMode, setEditMode] = useState(false);
     const [updatedPost, setUpdatedPost] = useState({ title: '', category: '', content: '' });
-    const [coverImage, setCoverImage] = useState(null);
 
+   
     useEffect(() => {
         const fetchPost = async () => {
             try {
@@ -25,14 +25,9 @@ const BlogPostDetails = () => {
                     throw new Error('Unable to fetch post.');
                 }
                 const data = await response.json();
-
-                // Check the structure of the fetched data
-                console.log('Post data:', data);
-
                 setPost(data);
                 setUpdatedPost({ title: data.title, category: data.category, content: data.content });
             } catch (error) {
-                console.error('Error fetching post:', error);
                 setError('Error fetching post: ' + error.message);
             } finally {
                 setLoading(false);
@@ -42,6 +37,7 @@ const BlogPostDetails = () => {
         fetchPost();
     }, [id]);
 
+   
     const handleCoverUploaded = (coverImageUrl) => {
         setPost(prevPost => ({
             ...prevPost,
@@ -57,13 +53,23 @@ const BlogPostDetails = () => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
-                body: JSON.stringify(updatedPost),
+                body: JSON.stringify({
+                    ...updatedPost
+                }),
             });
 
             if (response.ok) {
                 const updatedData = await response.json();
-                setPost(updatedData);
-                setEditMode(false);
+
+               
+                setPost(prevPost => ({
+                    ...prevPost,
+                    title: updatedData.title,
+                    category: updatedData.category,
+                    content: updatedData.content
+                }));
+
+                setEditMode(false); 
             } else {
                 const responseBody = await response.json();
                 setError(`Update failed: ${responseBody.message}`);
@@ -83,7 +89,7 @@ const BlogPostDetails = () => {
             });
 
             if (response.ok) {
-                navigate('/blogposts');
+                navigate('/blogposts'); 
             } else {
                 const responseBody = await response.json();
                 setError(`Deletion failed: ${responseBody.message}`);
@@ -93,14 +99,12 @@ const BlogPostDetails = () => {
         }
     };
 
+    
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
-
     if (!post) return <p>Post not found.</p>;
 
-    const canEdit = author?.email === post.author?.email;
-
-    const authorEmail = post.author?.email || 'Unknown author';
+    const canEdit = currentUser?.email === post.author?.email;
 
     return (
         <Container fluid="sm" className='mt-5'>
@@ -112,13 +116,13 @@ const BlogPostDetails = () => {
                     <div className="no-cover">No cover image</div>
                 )}
                 <p><strong>Category:</strong> {post.category || 'No category'}</p>
-                <p><strong>Author:</strong> {authorEmail}</p>
+                <p><strong>Author:</strong> {post.author?.email || 'Unknown author'}</p>
                 <p><strong>Read Time:</strong> {post.readTime?.value || 'Unknown'} {post.readTime?.unit || ''}</p>
                 <div className="post-content">
                     {post.content || 'No content available'}
                 </div>
 
-                {/* Comments Section */}
+              
                 <div className="comments-section mt-5">
                     <h3>Comments</h3>
                     <Comments postId={id} />
@@ -147,7 +151,7 @@ const BlogPostDetails = () => {
                                 onChange={(e) => setUpdatedPost({ ...updatedPost, title: e.target.value })}
                             />
                         </Form.Group>
-                        <Form.Group controlId="formCategory">
+                        <Form.Group controlId="formCategory" className="mt-3">
                             <Form.Label>Category</Form.Label>
                             <Form.Control
                                 type="text"
@@ -155,7 +159,7 @@ const BlogPostDetails = () => {
                                 onChange={(e) => setUpdatedPost({ ...updatedPost, category: e.target.value })}
                             />
                         </Form.Group>
-                        <Form.Group controlId="formContent">
+                        <Form.Group controlId="formContent" className="mt-3">
                             <Form.Label>Content</Form.Label>
                             <Form.Control
                                 as="textarea"
@@ -164,13 +168,13 @@ const BlogPostDetails = () => {
                                 onChange={(e) => setUpdatedPost({ ...updatedPost, content: e.target.value })}
                             />
                         </Form.Group>
-                        <UploadCover 
-                            postId={id}
-                            onCoverUploaded={handleCoverUploaded}
-                        />
-                        <Button onClick={handleEditPost} className="mt-3" variant="primary">Save Changes</Button>
-                        <Button onClick={() => setEditMode(false)} className="ms-2 mt-3" variant="secondary">Cancel</Button>
                     </Form>
+                    <UploadCover 
+                        postId={id}
+                        onCoverUploaded={handleCoverUploaded}
+                    />
+                    <Button onClick={handleEditPost} className="mt-3" variant="primary">Save Changes</Button>
+                    <Button onClick={() => setEditMode(false)} className="ms-2 mt-3" variant="secondary">Cancel</Button>
                 </Modal.Body>
             </Modal>
         </Container>

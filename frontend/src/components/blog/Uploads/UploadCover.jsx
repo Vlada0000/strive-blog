@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Form, Button, Alert, Spinner } from 'react-bootstrap'; 
+import { Container, Form, Button, Alert, Spinner } from 'react-bootstrap';
 
 const UploadCover = ({ postId, onCoverUploaded }) => {
   const [file, setFile] = useState(null);
@@ -55,31 +55,29 @@ const UploadCover = ({ postId, onCoverUploaded }) => {
       <h2 className="mb-4">Upload Blog Post Cover</h2>
       {error && <Alert variant="danger">{error}</Alert>}
       {success && <Alert variant="success">{success}</Alert>}
-      <Form>
-        <Form.Group>
-          <Form.Label>Select an Image</Form.Label>
-          <Form.Control 
-            type="file" 
-            onChange={handleFileChange} 
-            disabled={uploading} 
-          />
-        </Form.Group>
-        <Button 
-          onClick={handleUpload} 
-          variant="primary" 
-          className="mt-3" 
+      <Form.Group>
+        <Form.Label>Select an Image</Form.Label>
+        <Form.Control 
+          type="file" 
+          onChange={handleFileChange} 
           disabled={uploading} 
-        >
-          {uploading ? (
-            <>
-              <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" className="me-2" />
-              Uploading...
-            </>
-          ) : (
-            'Upload Cover'
-          )}
-        </Button>
-      </Form>
+        />
+      </Form.Group>
+      <Button 
+        onClick={handleUpload} 
+        variant="primary" 
+        className="mt-3" 
+        disabled={uploading} 
+      >
+        {uploading ? (
+          <>
+            <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" className="me-2" />
+            Uploading...
+          </>
+        ) : (
+          'Upload Cover'
+        )}
+      </Button>
     </Container>
   );
 };

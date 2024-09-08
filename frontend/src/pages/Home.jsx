@@ -31,7 +31,7 @@ const Home = () => {
   }
 
   return (
-    <Container fluid="sm">
+    <Container className="text-center">
       <h1 className="blog-main-title pb-0 mb-0">Welcome to the Strive Blog!</h1>
       <BlogPosts />
     </Container>

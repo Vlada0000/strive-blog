@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Container, Pagination, Form } from 'react-bootstrap';
+import BlogLike from '../components/likes/BlogLike';
 import './BlogPosts.css';
 
 
 const BlogPost = ({ post }) => {
   const authorEmail = post.author?.email || 'Unknown Author';
+
+  const handleLikeChange = (newLikes) => {
+    console.log(`Post ${post._id} updated likes:`, newLikes);
+  };
 
   return (
     <div className="blog-post">
@@ -17,8 +22,13 @@ const BlogPost = ({ post }) => {
       <div className="post-content">
         {post.content}
       </div>
+      <BlogLike
+        defaultLikes={post.likes}    
+        onChange={handleLikeChange} 
+      />
       <Link to={`/blogposts/${post._id}`} className="read-more-link">Read More</Link>
     </div>
+    
   );
 };
 

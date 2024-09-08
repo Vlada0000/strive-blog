@@ -32,7 +32,7 @@ const NavBar = () => {
         <Nav className="me-auto">
           <Nav.Link as={Link} to="/home" className="nav-link">Home</Nav.Link>
           <Nav.Link as={Link} to="/authors" className="nav-link">Authors</Nav.Link>
-          <Nav.Link as={Link} to="/blogPosts" className="nav-link">Blog Posts</Nav.Link>
+
         </Nav>
 
         <Button as={Link} to="/new" className="blog-navbar-add-button" size="lg">

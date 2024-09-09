@@ -12,12 +12,12 @@ passport.use(new GoogleStrategy({
   callbackURL: `${process.env.HOST}:${process.env.PORT}/auth/callback-google`,
 }, async (accessToken, refreshToken, profile, done) => {
   try {
-    console.log('Google Profile:', profile); // Log the Google profile information
+    console.log('Google Profile:', profile); 
 
-    // Check if the user already exists in the database
+    
     let user = await Author.findOne({ googleId: profile.id });
 
-    // If the user does not exist, create a new user
+    
     if (!user) {
       user = await Author.create({
         name: profile.displayName,
@@ -26,15 +26,15 @@ passport.use(new GoogleStrategy({
       });
     }
 
-    // Generate a JWT token for the user
+    
     const token = jwt.sign({ authorId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    console.log('Generated Token:', token); // Log the generated token
+    console.log('Generated Token:', token); 
 
-    // Pass the token to the callback
+    
     return done(null, { token });
   } catch (error) {
-    console.error('Error in GoogleStrategy:', error); // Log any errors that occur
+    console.error('Error in GoogleStrategy:', error);
     return done(error, null);
   }
 }));

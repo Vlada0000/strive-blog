@@ -8,9 +8,8 @@ import {
   deleteComment
 } from '../controllers/commentsController.js';
 
-const router = express.Router({ mergeParams: true }); // Per passare params al router
+const router = express.Router({ mergeParams: true }); 
 
-// Definizione delle rotte
 router.get('/', getCommentsByPostId);
 router.get('/:commentId', getCommentById);
 router.post('/', addCommentToPost);

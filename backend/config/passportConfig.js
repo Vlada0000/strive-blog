@@ -20,7 +20,7 @@ passport.use(new GoogleStrategy({
     // If the user does not exist, create a new user
     if (!user) {
       user = await Author.create({
-        name: profile.displayName, // Use 'name' for the user's name
+        name: profile.displayName,
         email: profile.emails[0].value,
         googleId: profile.id,
       });

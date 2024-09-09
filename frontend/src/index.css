@@ -24,6 +24,6 @@ body {
 
 @media (max-width: 576px) {
   body {
-    margin-top:45%; 
+    margin-top: 50%; 
   }
 }
